@@ -48,4 +48,12 @@ public UserInfo getUserInfoById(int id) {
 }
 
 
+@Override
+public void deleteUserInfo(int id) {
+	Session session = sessionFactory.getCurrentSession();
+	session.delete(session.get(UserInfo.class, id));
+	
+}
+
+
 }

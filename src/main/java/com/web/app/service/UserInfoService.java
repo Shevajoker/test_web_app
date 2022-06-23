@@ -9,4 +9,5 @@ public interface UserInfoService {
 	public List<UserInfo> getAllUserInfo();
 	public void saveUserInfo (UserInfo userInfo);
 	public UserInfo getUserInfoById(int id);
+	public void deleteUserInfo(int id);
 }

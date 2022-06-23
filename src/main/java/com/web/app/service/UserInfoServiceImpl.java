@@ -37,6 +37,12 @@ public UserInfo getUserInfoById(int id) {
 	return userDAO.getUserInfoById(id);
 }
 
+@Override
+@Transactional
+public void deleteUserInfo(int id) {
+	userDAO.deleteUserInfo(id);
+	
+}
 
 
 }

@@ -1,5 +1,7 @@
 package com.web.app.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,6 +36,9 @@ public class UserInfo {
 	
 	@Column(name ="message")
 	private String message;
+	
+	@Column(name = "birthday")
+	private String birthday;
 
 	
 	public UserInfo() {
@@ -41,7 +46,7 @@ public class UserInfo {
 	}
 
 
-	public UserInfo(int id, String name, String surname, int age, String address, String imgUrl, String message) {
+	public UserInfo(int id, String name, String surname, int age, String address, String imgUrl, String message, String birthday) {
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
@@ -49,6 +54,7 @@ public class UserInfo {
 		this.address = address;
 		this.imgUrl = imgUrl;
 		this.message = message;
+		this.birthday = birthday;
 	}
 
 
@@ -120,12 +126,27 @@ public class UserInfo {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
+	
+
+
+	public String getBirthday() {
+		return birthday;
+	}
+
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+
+
+	
 
 
 	@Override
 	public String toString() {
-		return "InfoUser [id=" + id + ", name=" + name + ", surname=" + surname + ", age=" + age + ", address="
-				+ address + ", imgUrl=" + imgUrl + ", message=" + message + "]";
+		return "UserInfo [id=" + id + ", name=" + name + ", surname=" + surname + ", age=" + age + ", address="
+				+ address + ", imgUrl=" + imgUrl + ", message=" + message + ", birthday=" + birthday + "]";
 	}
 
 
@@ -135,7 +156,10 @@ public class UserInfo {
 		int result = 1;
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
 		result = prime * result + age;
+		result = prime * result + ((birthday == null) ? 0 : birthday.hashCode());
 		result = prime * result + id;
+		result = prime * result + ((imgUrl == null) ? 0 : imgUrl.hashCode());
+		result = prime * result + ((message == null) ? 0 : message.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
 		return result;
@@ -158,7 +182,22 @@ public class UserInfo {
 			return false;
 		if (age != other.age)
 			return false;
+		if (birthday == null) {
+			if (other.birthday != null)
+				return false;
+		} else if (!birthday.equals(other.birthday))
+			return false;
 		if (id != other.id)
+			return false;
+		if (imgUrl == null) {
+			if (other.imgUrl != null)
+				return false;
+		} else if (!imgUrl.equals(other.imgUrl))
+			return false;
+		if (message == null) {
+			if (other.message != null)
+				return false;
+		} else if (!message.equals(other.message))
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -172,6 +211,9 @@ public class UserInfo {
 			return false;
 		return true;
 	}
+
+
+	
 	
 	
 	

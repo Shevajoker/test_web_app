@@ -54,7 +54,7 @@
 					</div>
 					<div class="mb-3">
 					<label class="form-label">Дата рождения</label>
-					<input type="date" class="form-control"/>
+					<input type="date" class="form-control" name="birthday" value="${userInfo.birthday}"/>
 					</div>
 
 					<div class="mb-3">
@@ -71,14 +71,15 @@
 					<div class="mb-3">
 						<c:if test="${userInfo.imgUrl != null}">
 							<img alt="photo" src="${userInfo.imgUrl}" height="25" width="25">
+							<br>
 						</c:if>
-						<input type="file" name="img" class="form-control"
+						<input type="file" name="img" class="form-control" accept="image/jpeg,image/png,image/gif" id="inp"
 							value="${userInfo.imgUrl }" />
 					</div>
 
 					<button type="submit" class="btn btn-outline-success">Сохранить</button>
 					<a class="btn btn-outline-danger"
-						href="${pageContext.request.contextPath}/users">close</a>
+						href="${pageContext.request.contextPath}/users">Закрыть</a>
 				</form:form>
 
 
@@ -88,6 +89,12 @@
 		</div>
 	</div>
 
+
+<script type="text/javascript">
+const dT = new DataTransfer();
+dT.items.add(new File(['foo'], '${userInfo.imgUrl }'));
+inp.files = dT.files;
+</script>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"

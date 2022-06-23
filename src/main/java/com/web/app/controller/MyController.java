@@ -16,9 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.web.app.entity.Employee;
+
 import com.web.app.entity.UserInfo;
-import com.web.app.service.EmployeeService;
 import com.web.app.service.UserInfoService;
 
 
@@ -28,21 +27,12 @@ import com.web.app.service.UserInfoService;
 @Controller
 public class MyController {
 	
-	@Autowired
-	private EmployeeService employeeService;
+	
 	
 	@Autowired
 	private UserInfoService userInfoService; 
 	
 	
-	@RequestMapping("/all")
-	public String showAllEmployees(Model model) {
-		List<Employee> allEmployess = employeeService.getAllEmployees();
-		
-		model.addAttribute("allEmployees", allEmployess);
-		
-		return "all-employees";
-	}
 	
 	
 	@RequestMapping("/users")
@@ -125,6 +115,14 @@ public class MyController {
 		model.addAttribute("userInfo", userInfoService.getUserInfoById(id));
 		
 		return "add-user";
+	}
+	
+	@GetMapping("/delete")
+	public String deleteUserInfo(@RequestParam("userInfoId") int id) {
+		
+		userInfoService.deleteUserInfo(id);
+		
+		return "redirect:/users";
 	}
 	
 	

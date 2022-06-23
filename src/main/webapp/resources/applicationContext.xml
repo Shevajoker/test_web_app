@@ -16,6 +16,8 @@
 
 	<context:component-scan
 		base-package="com.web.app" />
+	<context:property-placeholder
+		location="classpath:app.properties" />
 
 	<mvc:annotation-driven />
 
@@ -29,10 +31,9 @@
 		class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
 		<property name="driverClass" value="com.mysql.cj.jdbc.Driver" />
-		<property name="jdbcUrl"
-			value="jdbc:mysql://localhost:3306/twadb?useSSL=false&amp;serverTimezone=UTC" />
-		<property name="user" value="mainuser" />
-		<property name="password" value="123456" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/db1?useSSL=false&amp;serverTimezone=UTC" />
+		<property name="user" value="${db.user}" />
+		<property name="password" value="${db.password}" />
 	</bean>
 
 	<bean id="sessionFactory"
@@ -56,7 +57,7 @@
 
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize" value="2097152" />
+		<property name="maxUploadSize" value="${img.maxUploadSize}" />
 	</bean>
 
 

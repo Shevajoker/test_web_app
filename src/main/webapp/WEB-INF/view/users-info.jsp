@@ -40,6 +40,7 @@
       <th scope="col">Age</th>
       <th scope="col">Address</th>
       <th scope="col">Message</th>
+      <th scope="col">Birthday</th>
       <th scope="col">-/-</th>
     </tr>
   </thead>
@@ -47,6 +48,9 @@
   <c:forEach var="user" items="${infos}">
   
   <c:url var="chengeUserInfo" value="/chenge">
+  <c:param name="userInfoId" value="${user.id}"/>
+  </c:url>
+  <c:url var="deleteUserInfo" value="/delete">
   <c:param name="userInfoId" value="${user.id}"/>
   </c:url>
   
@@ -59,13 +63,13 @@
       
       <td>${user.address}</td>
       <td>${user.message}</td>
-      
+      <td>${user.birthday}</td>
       <td>
       <a href="${chengeUserInfo}" >
       <img alt="chenge" src="${pageContext.request.contextPath}/loadFiles/chenge.png">
       </a>
        / 
-       <a href="#">
+       <a href="${deleteUserInfo }">
       <img alt="delete" src="${pageContext.request.contextPath}/loadFiles/delete.png"> 
       </a>
       </td>
