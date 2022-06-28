@@ -4,12 +4,14 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+
+
 @Entity
 @Table(name = "users")
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(name = "username")
@@ -22,8 +24,8 @@ public class User {
 	private String confirmPassword;
 
 	@ManyToMany
-	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
-	inverseJoinColumns = @JoinColumn(name = "role_id"))
+	 @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
+     inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
 	
 	public User() {
@@ -70,11 +72,7 @@ public class User {
 		this.roles = roles;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", confirmPassword="
-				+ confirmPassword + ", roles=" + roles + "]";
-	}
+	
 	
 	
 	

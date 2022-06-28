@@ -4,6 +4,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,16 +17,14 @@
 
 
 	<div class="container">
-		<c:if test="${pageContext.request.userPrincipal.name != null }">
-			<form action="${contextPath}/logout" id="logoutForm">
-				<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" />
-			</form>
-			
-
-			<h2>Admin - ${pageContext.request.userPrincipal.name}  |  <a onclick="document.forms['logoutForm'].submit()"> Выход </a></h2>
-		</c:if>
-	</div>
+    <c:if test="${pageContext.request.userPrincipal.name != null}">
+        <form id="logoutForm" method="post" action="${contextPath}/logout">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        </form>
+        <h2>Admin Page ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a>
+        </h2>
+    </c:if>
+</div>
 
 </body>
 </html>

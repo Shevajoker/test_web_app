@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+
+
 @Entity
 @Table(name = "roles")
 public class Role {
@@ -52,10 +54,7 @@ public class Role {
 		this.users = users;
 	}
 
-	@Override
-	public String toString() {
-		return "Role [id=" + id + ", name=" + name+ ", users=" + users + "]";
-	}
+	
 
 	
 	

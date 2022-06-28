@@ -3,6 +3,8 @@ package com.web.app.service;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -27,18 +29,20 @@ public class UserServiceImpl implements UserService{
 	
 	
 	@Override
+	@Transactional
 	public void save(User user) {
 		
 		user.setPassword(bcryptRasswordEncoder.encode(user.getPassword()));
 		Set<Role> roles = new HashSet<>();
-		roles.add(roleDAO.getOne(1L));
+		roles.add(roleDAO.getFirstRole(1L));
 		user.setRoles(roles);
 		userDAO.save(user);
 		
 	}
 	
 	@Override
-	public User findByUsername(String usernsme) {
-		return userDAO.findByUsername(usernsme);
+	@Transactional
+	public User findByUsername(String username) {
+		return userDAO.findByUsername(username);
 	}
 }

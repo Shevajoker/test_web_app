@@ -36,13 +36,17 @@ public class UserController {
 	}
 
 	@PostMapping("/registration")
-	public String registration(@ModelAttribute("userForm") User user, BindingResult bindingResult, Model model) {
+	public String registration(@ModelAttribute("userForm") User user, 
+//			BindingResult bindingResult,
+			Model model) {
+		
 
-		validator.validate(user, bindingResult);
 
-		if (bindingResult.hasErrors()) {
-			return "/registration";
-		}
+//		validator.validate(user, bindingResult);
+//
+//		if (bindingResult.hasErrors()) {
+//			return "/registration";
+//		}
 
 		userService.save(user);
 
@@ -59,7 +63,7 @@ public class UserController {
 		}
 
 		if (logout != null) {
-			model.addAttribute("logout", "Выход!");
+			model.addAttribute("message", "Выход!");
 		}
 
 		return "login";
@@ -68,7 +72,7 @@ public class UserController {
 	@GetMapping("/")
 	public String indexPage (Model model) {
 		
-		return "redirect:/users";
+		return "users-info";
 	}
 	
 	@GetMapping("/admin")
