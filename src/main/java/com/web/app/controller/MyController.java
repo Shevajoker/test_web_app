@@ -96,15 +96,7 @@ public class MyController {
 		userInfo.setImgUrl("loadFiles/" + name);
 		
 		userInfoService.saveUserInfo(userInfo);
-		
-		
-//		model.addAttribute("name", name);
-//		model.addAttribute("userInfo", userInfo);
-//		model.addAttribute("fileName", file.getOriginalFilename());
-		
-		
-		
-//		return "test";
+
 		return "redirect:/users";
 	}
 	

@@ -18,6 +18,7 @@
 		base-package="com.web.app" />
 	<context:property-placeholder
 		location="classpath:app.properties" />
+		<import resource="/securityContext.xml"/>
 
 	<mvc:annotation-driven />
 
@@ -61,6 +62,9 @@
 	</bean>
 
 
+
+
+    
 
 
 

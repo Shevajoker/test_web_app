@@ -13,8 +13,6 @@
  PRIMARY KEY (id)
   ) ;
   
-INSERT INTO infouser (name, surname, age, address, img, message, birthday)
-VALUES
-('Don', 'Thurtlesov', 30, 'Брест, ул. Брест', 'img url...', 'Сообщение по юзеру)', '15 05 1995');
+INSERT INTO infouser (name, surname, age, address, img, message, birthday) VALUES ('Don', 'Thurtlesov', 30, 'Брест, ул. Брест', 'img url...', 'Сообщение по юзеру)', '15 05 1995');
 
 select * from infouser;
