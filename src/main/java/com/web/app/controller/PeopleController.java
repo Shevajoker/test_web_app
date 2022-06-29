@@ -17,51 +17,55 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 
-import com.web.app.entity.UserInfo;
-import com.web.app.service.UserInfoService;
+import com.web.app.entity.People;
+import com.web.app.service.PeopleService;
+import com.web.app.service.SecurityService;
 
 
 
 
 
 @Controller
-public class MyController {
+public class PeopleController {
 	
 	
 	
 	@Autowired
-	private UserInfoService userInfoService; 
+	private PeopleService peopleService; 
 	
 	
 	
 	
-	@RequestMapping("/users")
-	public String showAllUsersInfo(Model model) {
+	
+	
+	@RequestMapping("/info")
+	public String showAllPeople(Model model) {
 		
-		List<UserInfo> infos = userInfoService.getAllUserInfo();
+		List<People> peoples = peopleService.getAllPeople();
 		
-		model.addAttribute("infos", infos);
+		model.addAttribute("infos", peoples);
 		model.addAttribute("number", 0);
 		
-		return "users-info";
+		return "people-info";
 	}
 	
-	@GetMapping("/addNewUser")
-	public String addUser(Model model) {
+	@GetMapping("/addNewPeople")
+	public String addPeople(Model model) {
 		
-		UserInfo userInfo = new UserInfo();
-		model.addAttribute("userInfo", userInfo);
+		People people = new People();
+		model.addAttribute("peopleInfo", people);
 		
-		return "add-user";
+		return "people-add";
 	}
 	
-	@PostMapping("/saveUser")
-	public String saveNewUser(
-			@ModelAttribute("userInfo") UserInfo userInfo,
+	@PostMapping("/savePeople")
+	public String saveNewPeople(
+			@ModelAttribute("peopleInfo") People people,
 			@RequestParam("img") MultipartFile file,
 			Model model) {
 		
 		
+		System.out.println("public String saveNewPeople " + people.toString());
 		String name = null;
 
 		if (!file.isEmpty()) {
@@ -93,28 +97,28 @@ public class MyController {
 //			return "You failed to upload " + name + " because the file was empty.";
 		};
 		
-		userInfo.setImgUrl("loadFiles/" + name);
+		people.setImgUrl("loadFiles/" + name);
 		
-		userInfoService.saveUserInfo(userInfo);
+		peopleService.savePeople(people);
 
-		return "redirect:/users";
+		return "redirect:/info";
 	}
 	
 	
 	@GetMapping("/chenge")
-	public String chengeUserInfo(@RequestParam("userInfoId") int id, Model model) {
+	public String chengePeople(@RequestParam("peopleId") int id, Model model) {
 		
-		model.addAttribute("userInfo", userInfoService.getUserInfoById(id));
+		model.addAttribute("peopleInfo", peopleService.getPeopleById(id));
 		
-		return "add-user";
+		return "people-add";
 	}
 	
 	@GetMapping("/delete")
-	public String deleteUserInfo(@RequestParam("userInfoId") int id) {
+	public String deletePeople(@RequestParam("peopleId") int id) {
 		
-		userInfoService.deleteUserInfo(id);
+		peopleService.deletePeople(id);
 		
-		return "redirect:/users";
+		return "redirect:/info";
 	}
 	
 	

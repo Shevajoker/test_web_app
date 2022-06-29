@@ -11,7 +11,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.web.app.dao.UserDAO;
@@ -23,6 +23,7 @@ import com.web.app.entity.User;
  * 
  */
 
+@Component
 public class UserDetailsServiceImpl implements UserDetailsService{
 
 	@Autowired
@@ -33,6 +34,8 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
 		User user = userDAO.findByUsername(username);
+		
+		System.out.println("UserDetailsServiceImpl - loadUserByUsername : " + user);
 		
 		Set<GrantedAuthority> authorities = new HashSet<>();
 		

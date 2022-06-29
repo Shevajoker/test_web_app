@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Users Info</title>
+<title>People Info</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -31,12 +31,12 @@
 	<div class="container" style="margin-top: 50px;">
 		<div class="row">
 		<div class="col-3">
-		<h1>Users Information</h1>
+		<h1>People Information</h1>
 		</div>
 		
 		
 		<div class="col-3 text-center">
-		<button type="button" class="btn btn-outline-primary" onclick="window.location.href = 'addNewUser'">Add</button>
+		<button type="button" class="btn btn-outline-primary" onclick="window.location.href = 'addNewPeople'">Add people</button>
 		</div>
 		</div>
 	</div>
@@ -59,32 +59,32 @@
     </tr>
   </thead>
   <tbody>
-  <c:forEach var="user" items="${infos}">
+  <c:forEach var="people" items="${infos}">
   
-  <c:url var="chengeUserInfo" value="/chenge">
-  <c:param name="userInfoId" value="${user.id}"/>
+  <c:url var="chengePeople" value="/chenge">
+  <c:param name="peopleId" value="${people.id}"/>
   </c:url>
-  <c:url var="deleteUserInfo" value="/delete">
-  <c:param name="userInfoId" value="${user.id}"/>
+  <c:url var="deletePeople" value="/delete">
+  <c:param name="peopleId" value="${people.id}"/>
   </c:url>
   
     <tr>
       <th scope="row">${number = number+1 }</th>
-      <td> <img alt="photo" src="${user.imgUrl}" height="25" width="25"></td>
-      <td>${user.name}</td>
-      <td>${user.surname}</td>
-      <td>${user.age}</td>
+      <td> <img alt="photo" src="${people.imgUrl}" height="25" width="25"></td>
+      <td>${people.name}</td>
+      <td>${people.surname}</td>
+      <td>${people.age}</td>
       
-      <td>${user.address}</td>
-      <td>${user.message}</td>
-      <td>${user.birthday}</td>
+      <td>${people.address}</td>
+      <td>${people.message}</td>
+      <td>${people.birthday}</td>
       <td>
-      <a href="${chengeUserInfo}" >
-      <img alt="chenge" src="${pageContext.request.contextPath}/loadFiles/chenge.png">
+      <a href="${chengePeople}" >
+      <img alt="chenge" src="${contextPath}/loadFiles/chenge.png">
       </a>
        / 
-       <a href="${deleteUserInfo }">
-      <img alt="delete" src="${pageContext.request.contextPath}/loadFiles/delete.png"> 
+       <a href="${deletePeople }">
+      <img alt="delete" src="${contextPath}/loadFiles/delete.png"> 
       </a>
       </td>
 

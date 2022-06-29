@@ -22,6 +22,7 @@ public class UserDAOImpl implements UserDAO{
 		
 		User user =  (User) session.createQuery("from User where username = :username").setParameter("username", userName).list().get(0);
 		
+		System.out.println("UserDAOImpl - findByUsername : " + user);
 		
 		
 		return user;

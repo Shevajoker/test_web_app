@@ -3,7 +3,7 @@ package com.web.app.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+//import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.web.app.entity.User;
 import com.web.app.service.SecurityService;
 import com.web.app.service.UserService;
-import com.web.app.validator.UserValidator;
+//import com.web.app.validator.UserValidator;
 
 
 @Controller
@@ -20,12 +20,12 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@Autowired
-	private SecurityService securityService;
+//	@Autowired
+//	private SecurityService securityService;
 
-	@Autowired
-	private UserValidator 
-	validator;
+//	@Autowired
+//	private UserValidator 
+//	validator;
 
 	@GetMapping("/registration")
 	public String registration(Model model) {
@@ -50,9 +50,9 @@ public class UserController {
 
 		userService.save(user);
 
-		securityService.autoLogin(user.getUsername(), user.getPassword());
+//		securityService.autoLogin(user.getUsername(), user.getPassword());
 
-		return "redirect:/users";
+		return "redirect:/info";
 	}
 
 	@GetMapping("/login")
@@ -72,7 +72,7 @@ public class UserController {
 	@GetMapping("/")
 	public String indexPage (Model model) {
 		
-		return "users-info";
+		return "people-info";
 	}
 	
 	@GetMapping("/admin")

@@ -3,21 +3,24 @@
 	xmlns="http://www.springframework.org/schema/security"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-    http://www.springframework.org/schema/tx
-    http://www.springframework.org/schema/tx/spring-tx.xsd
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
 	<http auto-config="true">
-		<intercept-url pattern="/"	access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
-		<intercept-url pattern="/users"	access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
+		<intercept-url pattern="/" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
+		<intercept-url pattern="/info" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
+		<intercept-url pattern="/savePeople" method="POST" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
 		<intercept-url pattern="/admin" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
 		
+		
+		
+		
+		
+		
 
-		<form-login login-page="/login" default-target-url="/users"
+		<form-login login-page="/login" default-target-url="/info"
 			authentication-failure-url="/login?error"
 			username-parameter="username" password-parameter="password" />
 

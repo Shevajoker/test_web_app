@@ -4,10 +4,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8">
     <link
@@ -16,7 +17,7 @@
 	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
 	crossorigin="anonymous">
 
-    <title>Log in with your account</title>
+    <title>Вход в аккаунт</title>
 
     
 
@@ -30,8 +31,8 @@
 
 
 
-    <form method="POST" action="${contextPath}/login" class="form-signin">
-        <h2 class="form-heading">Log in</h2>
+    <form:form method="POST" action="${contextPath}/login" class="form-signin">
+        <h2 class="form-heading">Вход</h2>
 
         <div class="form-group ${error != null ? 'has-error' : ''}">
             <span>${message}</span>
@@ -39,13 +40,13 @@
                    autofocus="true"/>
             <input name="password" type="password" class="form-control" placeholder="Password"/>
             <span>${error}</span>
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-            <h4 class="text-center"><a href="${contextPath}/registration">Create an account</a></h4>
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Log"> 
+            <h4 class="text-center"><a href="${contextPath}/registration">Зарегистрируйтесь</a></h4>
         </div>
 
-    </form>
+    </form:form>
 
 </div>
 <script

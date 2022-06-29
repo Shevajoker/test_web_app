@@ -8,50 +8,50 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 
-import com.web.app.entity.UserInfo;
+import com.web.app.entity.People;
 
 @Repository
-public class UserInfoDAOImpl implements UserInfoDAO{
+public class PeopleDAOImpl implements PeopleDAO{
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 @Override
-public List<UserInfo> getAllUserInfo() {
+public List<People> getAllPeople() {
 	
 	Session session = sessionFactory.getCurrentSession();
 	
-	List<UserInfo> infos = session.createQuery("FROM UserInfo", UserInfo.class).getResultList();
+	List<People> peoples = session.createQuery("FROM People", People.class).getResultList();
 	
-	return infos;
+	return peoples;
 }
 
 
 
 @Override
-public void saveUserInfo(UserInfo userInfo) {
+public void savePeople(People people) {
 	
 	Session session = sessionFactory.getCurrentSession();
 	
-	session.saveOrUpdate(userInfo);
+	session.save(people);
 	
 }
 
 @Override
-public UserInfo getUserInfoById(int id) {
+public People getPeopleById(int id) {
 	
 	Session session = sessionFactory.getCurrentSession();
 	
-	UserInfo userInfo = session.get(UserInfo.class, id);
+	People people = session.get(People.class, id);
 	
 	
-	return userInfo;
+	return people;
 }
 
 
 @Override
-public void deleteUserInfo(int id) {
+public void deletePeople(int id) {
 	Session session = sessionFactory.getCurrentSession();
-	session.delete(session.get(UserInfo.class, id));
+	session.delete(session.get(People.class, id));
 	
 }
 
