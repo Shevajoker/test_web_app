@@ -3,8 +3,10 @@ package com.web.app.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.nio.file.Path;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,13 +16,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 
 import com.web.app.entity.People;
 import com.web.app.service.PeopleService;
-import com.web.app.service.SecurityService;
+
 
 
 
@@ -33,11 +34,7 @@ public class PeopleController {
 	
 	@Autowired
 	private PeopleService peopleService; 
-	
-	
-	
-	
-	
+
 	
 	@RequestMapping("/info")
 	public String showAllPeople(Model model) {
@@ -63,6 +60,7 @@ public class PeopleController {
 	public String saveNewPeople(
 			@ModelAttribute("peopleInfo") People people,
 			@RequestParam("img") MultipartFile file,
+			HttpServletRequest request,
 			Model model) {
 		
 	
@@ -74,9 +72,11 @@ public class PeopleController {
 
 				name = file.getOriginalFilename();
 
-				String rootPath = "C:\\Users\\Sheva\\eclipse-workspace\\test_web_app\\src\\main\\webapp";  
-//				System.getProperty("catalina.home");
-				File dir = new File(rootPath + File.separator + "loadFiles");
+				String rootPath = request.getSession().getServletContext().getRealPath("loadFiles");
+				
+				System.out.println("rootPath - " + rootPath);
+				
+				File dir = new File(rootPath);
 
 				if (!dir.exists()) {
 					dir.mkdirs();
@@ -84,17 +84,19 @@ public class PeopleController {
 
 				File uploadedFile = new File(dir.getAbsolutePath() + File.separator + name);
 
+				System.out.println("getAbsolutePath - " + dir.getAbsolutePath());
+				
 				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(uploadedFile));
 				stream.write(bytes);
 				stream.flush();
 				stream.close();
-//				model.addAttribute("uploadedFile", dir.getAbsolutePath() + File.separator + name);
 
 			} catch (Exception e) {
-//				return "You failed to upload " + name + " => " + e.getMessage();
+				name = "noImg.jpg";
 			}
+			
 		} else {
-//			return "You failed to upload " + name + " because the file was empty.";
+			name = "noImg.jpg";
 		};
 		
 		people.setImgUrl("loadFiles/" + name);

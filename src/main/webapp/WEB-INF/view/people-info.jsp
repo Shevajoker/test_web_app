@@ -71,7 +71,7 @@
   
     <tr>
       <th scope="row">${number = number+1 }</th>
-      <td> <img alt="photo" src="${contextPath}/${people.imgUrl}" height="25" width="25"></td>
+      <td> <img alt="photo" src="${people.imgUrl}" height="25" width="25"></td>
       <td>${people.name}</td>
       <td>${people.surname}</td>
       <td>${people.age}</td>
@@ -99,7 +99,7 @@
 	</div>
 
 
-
+${imgPath}
 
 
 	<script
