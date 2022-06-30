@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -64,8 +65,7 @@ public class PeopleController {
 			@RequestParam("img") MultipartFile file,
 			Model model) {
 		
-		
-		System.out.println("public String saveNewPeople " + people.toString());
+	
 		String name = null;
 
 		if (!file.isEmpty()) {

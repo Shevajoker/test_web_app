@@ -6,5 +6,6 @@ public interface UserService {
 
 	public void save(User user);
 	public User findByUsername(String usernsme);
+	public User findByUsernameValidator(String userName);
 	
 }

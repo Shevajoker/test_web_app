@@ -32,7 +32,7 @@ public void savePeople(People people) {
 	
 	Session session = sessionFactory.getCurrentSession();
 	
-	session.save(people);
+	session.saveOrUpdate(people);
 	
 }
 

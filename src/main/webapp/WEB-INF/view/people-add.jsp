@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
 
@@ -61,7 +61,8 @@
 					</div>
 					<div class="mb-3">
 					<label class="form-label">Дата рождения</label>
-					<input type="date" class="form-control" name="birthday" value="${peopleInfo.birthday}"/>
+					<fmt:formatDate value="${peopleInfo.birthday}" pattern="yyyy-MM-dd" var="birthday"/>
+					<input type="date" class="form-control" name="birthday" value="${birthday}"/>
 					</div>
 
 					<div class="mb-3">

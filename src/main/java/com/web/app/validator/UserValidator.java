@@ -30,16 +30,14 @@ public class UserValidator implements Validator{
 	public void validate(Object target, Errors errors) {
 		
 		User user = (User) target;
-		
-		System.out.println(user);
-		
+
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "","Поле обязательно к заполнению. This field is required");
 		
 		if (user.getUsername().length()<3 || user.getUsername().length() > 20) {
 			errors.rejectValue("username", "","Поле должно содержать более 3 и менее 20 символов");
 		}
 		
-		if (userService.findByUsername(user.getUsername())!=null) {
+		if (userService.findByUsernameValidator(user.getUsername()) != null) {
 			errors.rejectValue("username", "","Пользователь уже существует. User exists!");
 		}
 		
@@ -50,7 +48,7 @@ public class UserValidator implements Validator{
 		}
 		
 		if (!user.getConfirmPassword().equals(user.getPassword())) {
-			errors.rejectValue("confirmPassword", "", "formError.wrongPassword!");
+			errors.rejectValue("confirmPassword", "", "wrongPassword!");
 		}
 		
 		

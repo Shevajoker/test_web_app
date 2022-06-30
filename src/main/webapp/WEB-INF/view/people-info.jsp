@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
@@ -70,14 +71,14 @@
   
     <tr>
       <th scope="row">${number = number+1 }</th>
-      <td> <img alt="photo" src="${people.imgUrl}" height="25" width="25"></td>
+      <td> <img alt="photo" src="${contextPath}/${people.imgUrl}" height="25" width="25"></td>
       <td>${people.name}</td>
       <td>${people.surname}</td>
       <td>${people.age}</td>
       
       <td>${people.address}</td>
       <td>${people.message}</td>
-      <td>${people.birthday}</td>
+      <td> <fmt:formatDate value="${people.birthday}" pattern="dd-MM-yyyy"/> </td>
       <td>
       <a href="${chengePeople}" >
       <img alt="chenge" src="${contextPath}/loadFiles/chenge.png">

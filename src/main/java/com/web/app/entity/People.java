@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 
 @Entity
 @Table(name = "people")
@@ -38,6 +41,7 @@ public class People {
 	private String message;
 	
 	@Column(name = "birthday")
+	@DateTimeFormat(iso=ISO.DATE)
 	private Date birthday;
 
 	

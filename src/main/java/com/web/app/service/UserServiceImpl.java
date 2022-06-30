@@ -45,4 +45,10 @@ public class UserServiceImpl implements UserService{
 	public User findByUsername(String username) {
 		return userDAO.findByUsername(username);
 	}
+
+	@Override
+	@Transactional
+	public User findByUsernameValidator(String userName) {
+		return userDAO.findByUsernameValidator(userName);
+	}
 }

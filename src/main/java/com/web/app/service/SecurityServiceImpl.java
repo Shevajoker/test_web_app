@@ -35,15 +35,12 @@ public class SecurityServiceImpl implements SecurityService{
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
 
-        System.out.println("SecurityServiceImpl - autoLogin : " + authenticationToken.toString());
         
         authenticationManager.authenticate(authenticationToken);
 
         if (authenticationToken.isAuthenticated()) {
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-
-            System.out.println("autoLogin - " + username);
-        }
+       }
 		
 	}
 
