@@ -4,9 +4,6 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
-
-
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -23,7 +20,7 @@
 
 	<div class="container" style="margin-top: 50px">
 		<div class="row">
-			<div class="col-3">
+			<div class="col text-center">
 				<h1>Add new people.</h1>
 			</div>
 		</div>
@@ -77,6 +74,7 @@
 
 
 					<div class="mb-3">
+					<label class="form-label">Фото</label>
 						<c:if test="${peopleInfo.imgUrl != null}">
 							<img alt="photo" src="${peopleInfo.imgUrl}" height="25" width="25">
 							<br>
@@ -86,10 +84,13 @@
 					</div>
 					
 					
-					
-					<input type="submit" class="btn btn-outline-success" value="Сохранить">
-					<a class="btn btn-outline-danger"
-						href="${contextPath}/info">Закрыть</a>
+					<div class="mb-3">
+					<input type="submit" class="btn btn-outline-success form-control" value="Сохранить">
+					</div>
+					<div class="mb-3">
+					<a class="btn btn-outline-danger form-control"
+						href="${contextPath}/info" >Закрыть</a>
+						</div>
 				</form:form>
 
 

@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+
+.container{
+	padding-top: 50px;
+}
+
+.registrationHref{
+	padding-bottom: 50px;
+}
+
+.has-error{
+	
+	color: red;
+}

@@ -14,15 +14,16 @@
 	rel="stylesheet"
 	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
 	crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
 <div class="container">
     <c:if test="${pageContext.request.userPrincipal.name != null}">
         <form id="logoutForm" method="post" action="${contextPath}/logout">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            
         </form>
-        <h2> ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()" class="btn btn-outline-primary">Logout</a>
+        <h2> ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()" class="btn btn-outline-primary">Выход</a>
         </h2>
     </c:if>
 </div>
@@ -81,11 +82,9 @@
       <td> <fmt:formatDate value="${people.birthday}" pattern="dd-MM-yyyy"/> </td>
       <td>
       <a href="${chengePeople}" >
-      <img alt="chenge" src="${contextPath}/loadFiles/chenge.png">
-      </a>
-       / 
-       <a href="${deletePeople }">
-      <img alt="delete" src="${contextPath}/loadFiles/delete.png"> 
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+      </a>/<a href="${deletePeople }">
+      <i class="fa fa-trash" aria-hidden="true"></i>
       </a>
       </td>
 

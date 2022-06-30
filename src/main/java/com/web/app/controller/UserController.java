@@ -63,7 +63,7 @@ public class UserController {
 		}
 
 		if (logout != null) {
-			model.addAttribute("message", "Выход!");
+			model.addAttribute("message", "Вы успешно вышли из аккаунта.");
 		}
 
 		return "login";
@@ -72,7 +72,7 @@ public class UserController {
 	@GetMapping("/")
 	public String indexPage (Model model) {
 		
-		return "people-info";
+		return "redirect:/info";
 	}
 	
 	@GetMapping("/admin")

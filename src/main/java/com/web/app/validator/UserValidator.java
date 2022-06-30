@@ -31,24 +31,24 @@ public class UserValidator implements Validator{
 		
 		User user = (User) target;
 
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "","Поле обязательно к заполнению. This field is required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "","Поле обязательно к заполнению.");
 		
 		if (user.getUsername().length()<3 || user.getUsername().length() > 20) {
 			errors.rejectValue("username", "","Поле должно содержать более 3 и менее 20 символов");
 		}
 		
 		if (userService.findByUsernameValidator(user.getUsername()) != null) {
-			errors.rejectValue("username", "","Пользователь уже существует. User exists!");
+			errors.rejectValue("username", "","Пользователь уже существует!");
 		}
 		
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "", "Поле обязательно к заполнению. This field is required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "", "Поле обязательно к заполнению.");
 		
 		if (user.getPassword().length() < 6 || user.getPassword().length() > 20) {
 			errors.rejectValue("password", "", "Поле должно содержать более 6 и менее 20 символов");
 		}
 		
 		if (!user.getConfirmPassword().equals(user.getPassword())) {
-			errors.rejectValue("confirmPassword", "", "wrongPassword!");
+			errors.rejectValue("confirmPassword", "", "Не верный пароль!");
 		}
 		
 		

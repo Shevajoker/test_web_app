@@ -3,7 +3,6 @@ package com.web.app.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.nio.file.Path;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -122,6 +121,8 @@ public class PeopleController {
 		
 		return "redirect:/info";
 	}
+	
+
 	
 	
 }
